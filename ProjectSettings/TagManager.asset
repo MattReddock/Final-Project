@@ -8,6 +8,7 @@ TagManager:
   - StartMenu
   - LevelSelect
   - PauseMenu
+  - Chicken
   layers:
   - Default
   - TransparentFX

@@ -11,11 +11,13 @@ public class ChickenAI : MonoBehaviour
     private float timer; 
     private Transform target;
     private NavMeshAgent agent;
+    private Animator anim;
 
     private GameObject player;
     public float runAwayDistance = 6.0f;
 
     private bool running;
+    private bool walking;
  
     // Use this for initialization
     void Start () 
@@ -23,6 +25,7 @@ public class ChickenAI : MonoBehaviour
         player = GameObject.FindWithTag("Player");
         agent = GetComponent<NavMeshAgent>();
         timer = wanderTimer;
+        anim = GetComponent<Animator>();
     }
  
     // Update is called once per frame
@@ -36,12 +39,14 @@ public class ChickenAI : MonoBehaviour
                 Vector3 newPos = RandomNavSphere(transform.position, wanderRadius, -1);            
                 agent.SetDestination(newPos);
                 timer = 0;
+                walking = true;
+                //Invoke("StopWalk", 0.8f);
+                running = false;
             }
-
+            
         }
-
         float distance = Vector3.Distance(transform.position, player.transform.position);
-
+        
         if (distance < runAwayDistance)
         {
             Vector3 dirToPlayer = transform.position - player.transform.position;
@@ -50,14 +55,43 @@ public class ChickenAI : MonoBehaviour
 
             agent.SetDestination(newPos);
             running = true;
+            walking = false;
         }
         else
         {
             running = false;
         }
+
+        if (walking)
+        {
+            anim.SetBool("Walk", true);
+            walking = true;
+        }
+        else
+        {
+            anim.SetBool("Walk", false);
+            walking = false;
+        }
+
+        if (running)
+        {
+            anim.SetBool("Run", true);
+            running = true;
+        }
+        else
+        {
+            anim.SetBool("Run", false);
+            running = false;
+        }
+
+
     }
 
-     
+    private void StopWalk()
+    {
+        walking = false;
+    }
+
     public static Vector3 RandomNavSphere(Vector3 origin, float dist, int layermask)
     {
         Vector3 randDirection = Random.insideUnitSphere * dist;
@@ -68,7 +102,6 @@ public class ChickenAI : MonoBehaviour
  
         NavMesh.SamplePosition (randDirection, out navHit, dist, layermask);
  
-        return navHit.position;            
-        
+        return navHit.position;
     }
 }
