@@ -64,6 +64,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Assets\SciFi Hallway\Common Scripts\Turn_Move.cs" />
+    <Compile Include="Assets\Scripts\CatchChicken.cs" />
     <Compile Include="Assets\Scripts\ChickenAI.cs" />
     <Compile Include="Assets\Scripts\ChickenMovement.cs" />
     <Compile Include="Assets\Scripts\MouseLook.cs" />
@@ -71,7 +72,6 @@
     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\RunAway.cs" />
     <Compile Include="Assets\Scripts\StartMenuScript.cs" />
-    <Compile Include="Assets\Scripts\TestOnOffBool.cs" />
     <None Include="Assets\Assets\SciFi Hallway\Readme_Please.txt" />
     <None Include="Assets\Assets\Sci-Fi Styled Modular Pack\Readme.txt" />
     <None Include="Assets\Assets\SciFi Hallway 2\_3D Scifi Kit Starter Kit\_Docs\Doc.txt" />
