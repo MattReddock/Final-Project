@@ -298,7 +298,7 @@ GameObject:
   - component: {fileID: 4465278782681935163}
   m_Layer: 0
   m_Name: Toon Chicken
-  m_TagString: Chicken
+  m_TagString: Chook
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
