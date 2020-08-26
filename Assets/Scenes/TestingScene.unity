@@ -502,6 +502,8 @@ MonoBehaviour:
   wanderRadius: 3
   wanderTimer: 5
   runAwayDistance: 6
+  EggPrefab: {fileID: 2797549965718529302, guid: 2cfe8c05600e44049bc6cef6ea815fc4,
+    type: 3}
 --- !u!195 &558712083
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -646,15 +648,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4303844821561524, guid: 312b31977ed9b2d48a14849ebb8c7fb3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.8518386
+      value: -8.589
       objectReference: {fileID: 0}
     - target: {fileID: 4303844821561524, guid: 312b31977ed9b2d48a14849ebb8c7fb3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7.043872e-18
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4303844821561524, guid: 312b31977ed9b2d48a14849ebb8c7fb3, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.3172278
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4303844821561524, guid: 312b31977ed9b2d48a14849ebb8c7fb3, type: 3}
       propertyPath: m_LocalRotation.x

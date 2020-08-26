@@ -19,6 +19,8 @@ public class ChickenAI : MonoBehaviour
 
     private bool running;
     private bool walking;
+
+    public GameObject EggPrefab;
  
     // Use this for initialization
     void Start () 
@@ -115,6 +117,7 @@ public class ChickenAI : MonoBehaviour
     private void DropMine()
     {
         Debug.Log("DropMine() start");
+        Instantiate(EggPrefab, new Vector3(0, 0, 0), Quaternion.identity);
         mineTimer = Random.Range(3f, 10f);
     }
 }

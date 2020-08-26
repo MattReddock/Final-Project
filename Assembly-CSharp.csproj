@@ -58,6 +58,7 @@
      <Compile Include="Assets\Assets\SciFi Hallway\Common Scripts\Turn_Move.cs" />
      <Compile Include="Assets\BrokenVector\LowPolyFencePack\Scripts\DoorController.cs" />
      <Compile Include="Assets\BrokenVector\LowPolyFencePack\Scripts\DoorToggle.cs" />
+     <Compile Include="Assets\Scripts\CatchChicken.cs" />
      <Compile Include="Assets\Scripts\ChickenAI.cs" />
      <Compile Include="Assets\Scripts\ChickenMovement.cs" />
      <Compile Include="Assets\Scripts\DropMine.cs" />
@@ -66,7 +67,7 @@
      <Compile Include="Assets\Scripts\PlayerMovement.cs" />
      <Compile Include="Assets\Scripts\RunAway.cs" />
      <Compile Include="Assets\Scripts\StartMenuScript.cs" />
-     <Compile Include="Assets\Scripts\TestOnOffBool.cs" />
+     <Compile Include="Assets\Scripts\StrugglingChook.cs" />
      <None Include="Assets\Assets\SciFi Hallway\Readme_Please.txt" />
      <None Include="Assets\Assets\Sci-Fi Styled Modular Pack\Readme.txt" />
      <None Include="Assets\Assets\SciFi Hallway 2\_3D Scifi Kit Starter Kit\_Docs\Doc.txt" />
