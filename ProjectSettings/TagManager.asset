@@ -9,6 +9,8 @@ TagManager:
   - LevelSelect
   - PauseMenu
   - Chicken
+  - Chook
+  - DropZone
   layers:
   - Default
   - TransparentFX

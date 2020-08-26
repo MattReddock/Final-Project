@@ -4,70 +4,72 @@ using UnityEngine;
 
 public class CatchChicken : MonoBehaviour
 {
-    public GameObject Chooks = null;
-    private float Time = 0;
-    public float captureTime = 3;
+    public GameObject caughtChook;
+    private float timer = 0;
+    public float catchTime = 3;
     public float dropoffTime = 3;
 
-    private bool m_hasPassenger = false;
+    private bool hasChicken = false;
 
-    private void Start()
+
+    // Start is called before the first frame update
+    void Start()
     {
-        Chooks.SetActive(false);
-        m_hasPassenger = false;
-
+        caughtChook.SetActive(false);
+        hasChicken = false;
     }
 
-    void OnTriggerEnter(Collider collider) 
-    { 
-        if (collider.gameObject.tag == "Swimmer" && m_hasPassenger == false)
-        { 
-            Time = 0;            
-        } 
-        else if (collider.gameObject.tag == "DropZone" && m_hasPassenger == true)
+    private void OnTriggerEnter(Collider collider)
+    {
+        if (collider.gameObject.tag == "Chicken" && hasChicken == false)
         {
-            Time = 0; 
+            timer = 0;
         }
-        
+        else if (collider.gameObject.tag == "DropZone" && hasChicken == true)
+        {
+            timer = 0;
+        }
+
     }
 
-    void OnTriggerStay(Collider collider) 
-    { 
-        if (collider.gameObject.tag == "Swimmer" && m_hasPassenger == false) 
+    private void OnTriggerStay(Collider collider)
+    {
+        if (collider.gameObject.tag == "Chicken" && hasChicken == false)
         {
-            Time += UnityEngine.Time.deltaTime; Debug.Log((captureTime / Time));
-
-            if (Time >= captureTime) 
-            { 
-                PickupSwimmer(collider.gameObject); 
-            } 
-        } 
-        else if (collider.gameObject.tag == "DropZone" && m_hasPassenger == true) 
-        {
-            Time += UnityEngine.Time.deltaTime; 
-            if (Time >= dropoffTime) 
-            { 
-                DropoffSwimmer(); 
+            timer += Time.deltaTime;
+            if(timer >= catchTime)
+            {
+                PickupChook(collider.gameObject);
             }
 
         }
-        
+        else if (collider.gameObject.tag == "DropZone" && hasChicken == true)
+        {
+            timer += Time.deltaTime;
+            if (timer >= dropoffTime)
+            {
+                DropoffChook();
+            }
+        }
     }
 
-    private void OnTriggerExit(Collider other) 
-    { 
-        Time = 0; 
+    private void OnTriggerExit(Collider other)
+    {
+        timer = 0;
     }
 
-    public void PickupSwimmer(GameObject swimmer)
-    {
-        swimmer.SetActive(false);
-        Chooks.SetActive(true);
-        m_hasPassenger = true;
+    public void PickupChook(GameObject chook)
+    {        
+        caughtChook.SetActive(true);
+        hasChicken = true;
+        Destroy(chook);
     }
-    public void DropoffSwimmer()
+
+    public void DropoffChook()
     {
-        Chooks.SetActive(false);
-        m_hasPassenger = false;
+        caughtChook.SetActive(false);
+        hasChicken = false;
     }
+
+
 }
