@@ -8,7 +8,8 @@ public class ChickenAI : MonoBehaviour
 {
     public float wanderRadius = 3.0f;
     public float wanderTimer = 5.0f;
-    private float timer; 
+    private float timer;
+    private float mineTimer;
     private Transform target;
     private NavMeshAgent agent;
     private Animator anim;
@@ -26,6 +27,7 @@ public class ChickenAI : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         timer = wanderTimer;
         anim = GetComponent<Animator>();
+        mineTimer = Random.Range(3f, 7f);
     }
  
     // Update is called once per frame
@@ -77,6 +79,11 @@ public class ChickenAI : MonoBehaviour
         {
             anim.SetBool("Run", true);
             running = true;
+            mineTimer -= Time.deltaTime;
+            if (mineTimer < 0)
+            {
+                DropMine();
+            }
         }
         else
         {
@@ -103,5 +110,11 @@ public class ChickenAI : MonoBehaviour
         NavMesh.SamplePosition (randDirection, out navHit, dist, layermask);
  
         return navHit.position;
+    }
+
+    private void DropMine()
+    {
+        Debug.Log("DropMine() start");
+        mineTimer = Random.Range(3f, 10f);
     }
 }
