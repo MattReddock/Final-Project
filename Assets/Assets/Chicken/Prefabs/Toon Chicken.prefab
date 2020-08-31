@@ -296,7 +296,8 @@ GameObject:
   - component: {fileID: 95943282229431942}
   - component: {fileID: 7366501286860540298}
   - component: {fileID: 4465278782681935163}
-  - component: {fileID: 5346012292937001577}
+  - component: {fileID: 8588367070297587290}
+  - component: {fileID: 6734508242393553078}
   m_Layer: 0
   m_Name: Toon Chicken
   m_TagString: Chicken
@@ -379,8 +380,9 @@ MonoBehaviour:
   wanderRadius: 3
   wanderTimer: 5
   runAwayDistance: 6
---- !u!65 &5346012292937001577
-BoxCollider:
+  EggPrefab: {fileID: 0}
+--- !u!135 &8588367070297587290
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -390,8 +392,21 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 4.413004, y: 2.309671, z: 3.1869464}
-  m_Center: {x: -0.39805317, y: 1.0831118, z: -0.047513664}
+  m_Radius: 2
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!135 &6734508242393553078
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1311290861401530}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.24860793
+  m_Center: {x: -0.0067698956, y: 0.23799366, z: 0}
 --- !u!1 &1325880688823160
 GameObject:
   m_ObjectHideFlags: 0

@@ -11,12 +11,14 @@ public class CatchChicken : MonoBehaviour
 
     private bool hasChicken = false;
 
-
+    private RevealingScript revealingScript;
+    
     // Start is called before the first frame update
     void Start()
     {
         caughtChook.SetActive(false);
         hasChicken = false;
+        revealingScript = FindObjectOfType<RevealingScript>();
     }
 
     private void OnTriggerEnter(Collider collider)
@@ -66,10 +68,10 @@ public class CatchChicken : MonoBehaviour
     }
 
     public void DropoffChook()
-    {
+    {        
         caughtChook.SetActive(false);
         hasChicken = false;
+        revealingScript.CatchChook();
     }
-
-
+    
 }
