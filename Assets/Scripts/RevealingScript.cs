@@ -6,29 +6,31 @@ public class RevealingScript : MonoBehaviour
 {
     public Transform[] hiddenObjects;
     
-
     public void Start()
     {
         
-        //if ()
-        //{
-            hiddenObjects = GetComponentsInChildren<Transform>();
-            foreach (Transform child in hiddenObjects)
+        hiddenObjects = GetComponentsInChildren<Transform>();
+
+        foreach (Transform child in hiddenObjects)
+        {
+            if (child.gameObject != this.gameObject)
             {
                 child.gameObject.SetActive(false);
             }
-        //}
-    }
+        }
+        
+    }    
 
     public void CatchChook()
     {
-        foreach(Transform child in hiddenObjects)
+        foreach (Transform child in hiddenObjects)
         {
-            if(child.gameObject.activeSelf == false)
+            if (child.gameObject.activeSelf == false)
             {
                 child.gameObject.SetActive(true);
-                return;
+                break;
             }
         }
+        
     }
 }

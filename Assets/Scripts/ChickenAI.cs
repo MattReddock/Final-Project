@@ -21,7 +21,10 @@ public class ChickenAI : MonoBehaviour
     private bool walking;
 
     public GameObject EggPrefab;
- 
+
+    float smooth = 5.0f;
+    float tiltAngle = 60.0f;    
+
     // Use this for initialization
     void Start () 
     {
@@ -29,13 +32,14 @@ public class ChickenAI : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         timer = wanderTimer;
         anim = GetComponent<Animator>();
-        mineTimer = Random.Range(3f, 7f);
+        mineTimer = Random.Range(3f, 7f);        
     }
  
     // Update is called once per frame
     void Update ()
     {
         timer += Time.deltaTime;
+        
  
         if (timer >= wanderTimer) {
             if(!running)
@@ -44,7 +48,7 @@ public class ChickenAI : MonoBehaviour
                 agent.SetDestination(newPos);
                 timer = 0;
                 walking = true;
-                //Invoke("StopWalk", 0.8f);
+                Invoke("StopWalk", 0.8f);
                 running = false;
             }
             
@@ -117,7 +121,16 @@ public class ChickenAI : MonoBehaviour
     private void DropMine()
     {
         Debug.Log("DropMine() start");
-        Instantiate(EggPrefab, new Vector3(0, 0, 0), Quaternion.identity);
-        mineTimer = Random.Range(3f, 10f);
+        float tiltAroundZ = Input.GetAxis("Horizontal") * tiltAngle;
+        float tiltAroundX = Input.GetAxis("Vertical") * tiltAngle;
+
+        Quaternion target = Quaternion.Euler(tiltAroundX, 0, tiltAroundZ);
+        transform.rotation = Quaternion.Slerp(transform.rotation, target, Time.deltaTime * smooth);
+
+        if (running)
+        {
+            Instantiate(EggPrefab, transform.position, transform.rotation);
+        }
+        mineTimer = Random.Range(3f, 7f);
     }
 }
