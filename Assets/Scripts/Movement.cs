@@ -46,5 +46,14 @@ public class Movement : MonoBehaviour
         
         controller.Move(velocity * Time.deltaTime);
     }
+    public void HitEgg()
+    {
+        speed = 7f;
+    }
+
+    public void LeaveEgg()
+    {
+        speed = 12f;
+    }
 }
 

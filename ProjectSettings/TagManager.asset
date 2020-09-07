@@ -8,6 +8,10 @@ TagManager:
   - StartMenu
   - LevelSelect
   - PauseMenu
+  - Chicken
+  - DropZone
+  - HiddenObj
+  - Ignore
   layers:
   - Default
   - TransparentFX
