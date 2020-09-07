@@ -118,7 +118,7 @@ public class ChickenAI : MonoBehaviour
         return navHit.position;
     }
 
-    private void DropMine()
+    public void DropMine()
     {
         Debug.Log("DropMine() start");
         float tiltAroundZ = Input.GetAxis("Horizontal") * tiltAngle;
