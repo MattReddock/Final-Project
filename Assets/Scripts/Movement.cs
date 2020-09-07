@@ -9,6 +9,8 @@ public class Movement : MonoBehaviour
     public float speed = 12f;
     public float gravity = -9.81f;
     public float jumpHeight = 3f;
+    public float lowerGravity = -20f;
+    public float bigJump = 6f;
 
     public Transform groundCheck;
     public float groundDistance = 0.4f;
@@ -17,6 +19,15 @@ public class Movement : MonoBehaviour
     Vector3 velocity;
     bool isGrounded;
     Vector3 move;
+
+    private Rigidbody rb;
+    private CatchChicken caught;
+
+    private void Start()
+    {
+        caught = FindObjectOfType<CatchChicken>();
+        rb = GetComponent<Rigidbody>();
+    }
 
     void Update()
     {
@@ -39,7 +50,17 @@ public class Movement : MonoBehaviour
         
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
-            velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+            
+            if(caught.hasChicken == true)
+            {
+                rb.mass = 0.25f;
+                velocity.y = Mathf.Sqrt(jumpHeight * -2f * lowerGravity);
+            }
+            else
+            {
+                rb.mass = 1f;
+                velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+            }
         }
         
         velocity.y += gravity * Time.deltaTime;
@@ -48,7 +69,7 @@ public class Movement : MonoBehaviour
     }
     public void HitEgg()
     {
-        speed = 7f;
+        speed = 3f;
     }
 
     public void LeaveEgg()

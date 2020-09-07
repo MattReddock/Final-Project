@@ -37,4 +37,8 @@ public class EggMine : MonoBehaviour
     {
         Destroy(gameObject, lifetime);
     }
+
+    //Allow you to set a custom rotation for a prefab clone eg. the eggmine
+    //GameObject pc = (GameObject)Instantiate(Prefab, position, rotation, transform);
+    //pc.transform.Rotate(new Vector3(rotationWished.x, rotationWished.y, rotationWished.z));
 }

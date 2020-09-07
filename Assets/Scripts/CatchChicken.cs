@@ -6,10 +6,10 @@ public class CatchChicken : MonoBehaviour
 {
     public GameObject caughtChook;
     private float timer = 0;
-    public float catchTime = 3;
-    public float dropoffTime = 3;
+    public float catchTime = 1;
+    public float dropoffTime = 2;
 
-    private bool hasChicken = false;
+    public bool hasChicken = false;
 
     private RevealingScript revealingScript;
     

@@ -4,18 +4,19 @@ using UnityEngine;
 
 public class RevealingScript : MonoBehaviour
 {
-    public Transform[] hiddenObjects;
+    public GameObject[] hiddenObjects;
     
     public void Start()
     {
         
-        hiddenObjects = GetComponentsInChildren<Transform>();
+        hiddenObjects = GameObject.FindGameObjectsWithTag("HiddenObj");
 
-        foreach (Transform child in hiddenObjects)
+        foreach (GameObject child in hiddenObjects)
         {
-            if (child.gameObject != this.gameObject)
+
+            if (child != this.gameObject)
             {
-                child.gameObject.SetActive(false);
+                child.SetActive(false);
             }
         }
         
@@ -23,11 +24,11 @@ public class RevealingScript : MonoBehaviour
 
     public void CatchChook()
     {
-        foreach (Transform child in hiddenObjects)
+        foreach (GameObject child in hiddenObjects)
         {
-            if (child.gameObject.activeSelf == false)
+            if (child.activeSelf == false)
             {
-                child.gameObject.SetActive(true);
+                child.SetActive(true);
                 break;
             }
         }

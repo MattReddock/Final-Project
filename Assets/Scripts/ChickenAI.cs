@@ -107,15 +107,18 @@ public class ChickenAI : MonoBehaviour
 
     public static Vector3 RandomNavSphere(Vector3 origin, float dist, int layermask)
     {
-        Vector3 randDirection = Random.insideUnitSphere * dist;
- 
-        randDirection += origin;
- 
-        NavMeshHit navHit;
- 
-        NavMesh.SamplePosition (randDirection, out navHit, dist, layermask);
- 
-        return navHit.position;
+        float randomTime = Random.Range(3f, 7f);
+        
+            Vector3 randDirection = Random.insideUnitSphere * dist;
+
+            randDirection += origin;
+
+            NavMeshHit navHit;
+
+            NavMesh.SamplePosition(randDirection, out navHit, dist, layermask);
+
+            return navHit.position;
+        
     }
 
     public void DropMine()
