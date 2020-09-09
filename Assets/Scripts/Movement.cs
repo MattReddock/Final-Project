@@ -10,7 +10,7 @@ public class Movement : MonoBehaviour
     public float gravity = -9.81f;
     public float jumpHeight = 3f;
     public float lowerGravity = -20f;
-    public float bigJump = 6f;
+    public float bigJump = 4.5f;
 
     public Transform groundCheck;
     public float groundDistance = 0.4f;
