@@ -379,6 +379,7 @@ MonoBehaviour:
   wanderRadius: 3
   wanderTimer: 5
   runAwayDistance: 6
+  EggPrefab: {fileID: 0}
 --- !u!65 &5346012292937001577
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -390,8 +391,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 4.413004, y: 2.309671, z: 3.1869464}
-  m_Center: {x: -0.39805317, y: 1.0831118, z: -0.047513664}
+  m_Size: {x: 5, y: 5, z: 5}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1325880688823160
 GameObject:
   m_ObjectHideFlags: 0
