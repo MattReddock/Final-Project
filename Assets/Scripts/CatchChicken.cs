@@ -6,17 +6,19 @@ public class CatchChicken : MonoBehaviour
 {
     public GameObject caughtChook;
     private float timer = 0;
-    public float catchTime = 3;
-    public float dropoffTime = 3;
+    public float catchTime = 2f;
+    public float dropoffTime = 2f;
 
-    private bool hasChicken = false;
+    public bool hasChicken = false;
 
-
+    private RevealingScript revealingScript;
+    
     // Start is called before the first frame update
     void Start()
     {
         caughtChook.SetActive(false);
         hasChicken = false;
+        revealingScript = FindObjectOfType<RevealingScript>();
     }
 
     private void OnTriggerEnter(Collider collider)
@@ -66,10 +68,10 @@ public class CatchChicken : MonoBehaviour
     }
 
     public void DropoffChook()
-    {
+    {        
         caughtChook.SetActive(false);
         hasChicken = false;
+        revealingScript.CatchChook();
     }
-
-
+    
 }
