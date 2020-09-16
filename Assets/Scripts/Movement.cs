@@ -41,7 +41,7 @@ public class Movement : MonoBehaviour
         {
             controller.Move(move * speed * Time.deltaTime);
         }
-        
+        Debug.Log("isGrouned = " + isGrounded);
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
         if (isGrounded && velocity.y < 0)
         {

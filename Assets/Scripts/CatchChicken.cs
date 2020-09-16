@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CatchChicken : MonoBehaviour
 {
@@ -8,6 +9,9 @@ public class CatchChicken : MonoBehaviour
     private float timer = 0;
     public float catchTime = 2f;
     public float dropoffTime = 2f;
+    public Transform ChickenCount;
+    private int chickensCaught = 0;
+    private GameObject[] chickensInLevel;
 
     public bool hasChicken = false;
 
@@ -16,6 +20,8 @@ public class CatchChicken : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        chickensInLevel = GameObject.FindGameObjectsWithTag("Chicken");
+        ChickenCount.GetComponent<Text>().text = ("Collected Chickens: " + chickensCaught + "/" + chickensInLevel.Length);
         caughtChook.SetActive(false);
         hasChicken = false;
         revealingScript = FindObjectOfType<RevealingScript>();
@@ -50,6 +56,8 @@ public class CatchChicken : MonoBehaviour
             timer += Time.deltaTime;
             if (timer >= dropoffTime)
             {
+                chickensCaught++;
+                ChickenCount.GetComponent<Text>().text = ("Collected Chickens: " + chickensCaught + "/" + chickensInLevel.Length);
                 DropoffChook();
             }
         }
