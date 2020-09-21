@@ -12,9 +12,11 @@ public class CatchChicken : MonoBehaviour
     public float dropoffTime = 2f;
     public Transform ChickenCount;
     private int chickensCaught = 0;
-    private GameObject[] chickensInLevel;
-
-    public int level;
+    public GameObject[] chickensInLevel;
+    public GameObject[] allCaught;
+    
+    private int chickens;
+    //private int level;
 
     public bool hasChicken = false;
 
@@ -23,16 +25,30 @@ public class CatchChicken : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-                chickensInLevel = GameObject.FindGameObjectsWithTag("Chicken");
+        chickensInLevel = GameObject.FindGameObjectsWithTag("Chicken");
+        allCaught = GameObject.FindGameObjectsWithTag("Chicken");
         ChickenCount.GetComponent<Text>().text = ("Collected Chickens: " + chickensCaught + "/" + chickensInLevel.Length);
         caughtChook.SetActive(false);
         hasChicken = false;
         revealingScript = FindObjectOfType<RevealingScript>();
+        chickens = chickensInLevel.Length;
+        //level = SceneManager.GetActiveScene();
     }
 
     public void Update()
     {
         
+        
+        if(chickens == 0)
+        {
+
+            foreach(GameObject chookers in chickensInLevel)
+                GameObject.Destroy(chookers);
+        }
+        if(allCaught.Length == 0)
+        {
+            Levels();
+        }
         
     }
 
@@ -51,10 +67,7 @@ public class CatchChicken : MonoBehaviour
 
     public void Levels()
     {
-        if (chickensCaught == chickensInLevel.Length)
-        {
-            SceneManager.LoadScene(level);
-        }        
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     private void OnTriggerStay(Collider collider)
@@ -89,14 +102,16 @@ public class CatchChicken : MonoBehaviour
     {        
         caughtChook.SetActive(true);
         hasChicken = true;
-        Destroy(chook);
+        chook.SetActive(false);
     }
 
     public void DropoffChook()
-    {        
+    {
         caughtChook.SetActive(false);
         hasChicken = false;
         revealingScript.CatchChook();
+        chickens--;
+        allCaught = GameObject.FindGameObjectsWithTag("Chicken");
     }
     
 }

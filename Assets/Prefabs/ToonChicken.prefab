@@ -299,7 +299,7 @@ GameObject:
   - component: {fileID: 8588367070297587290}
   - component: {fileID: 6734508242393553078}
   m_Layer: 0
-  m_Name: Toon Chicken
+  m_Name: ToonChicken
   m_TagString: Chicken
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -380,7 +380,8 @@ MonoBehaviour:
   wanderRadius: 3
   wanderTimer: 5
   runAwayDistance: 6
-  EggPrefab: {fileID: 0}
+  EggPrefab: {fileID: 2797549965718529302, guid: 2cfe8c05600e44049bc6cef6ea815fc4,
+    type: 3}
 --- !u!135 &8588367070297587290
 SphereCollider:
   m_ObjectHideFlags: 0

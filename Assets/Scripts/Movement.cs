@@ -8,7 +8,7 @@ public class Movement : MonoBehaviour
 
     public float speed = 12f;
     public float gravity = -9.81f;
-    public float jumpHeight = 3f;
+    public float jumpHeight = 1.5f;
     public float lowerGravity = -20f;
     public float bigJump = 4.5f;
 
