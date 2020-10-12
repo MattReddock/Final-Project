@@ -73,6 +73,7 @@
     <Compile Include="Assets\Scripts\CatchChicken.cs" />
     <Compile Include="Assets\Scripts\ChickenAI.cs" />
     <Compile Include="Assets\Scripts\ChickenMovement.cs" />
+    <Compile Include="Assets\Scripts\DoorScript.cs" />
     <Compile Include="Assets\Scripts\DropMine.cs" />
     <Compile Include="Assets\Scripts\EggMine.cs" />
     <Compile Include="Assets\Scripts\MouseLook.cs" />
