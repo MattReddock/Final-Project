@@ -1,24 +1,55 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class CatchChicken : MonoBehaviour
 {
     public GameObject caughtChook;
     private float timer = 0;
-    public float catchTime = 3;
-    public float dropoffTime = 3;
+    public float catchTime = 2f;
+    public float dropoffTime = 2f;
+    public Transform ChickenCount;
+    private int chickensCaught = 0;
+    public GameObject[] chickensInLevel;
+    public GameObject[] allCaught;
+    
+    private int chickens;
+    //private int level;
 
-    private bool hasChicken = false;
+    public bool hasChicken = false;
 
     private RevealingScript revealingScript;
     
     // Start is called before the first frame update
     void Start()
     {
+        chickensInLevel = GameObject.FindGameObjectsWithTag("Chicken");
+        allCaught = GameObject.FindGameObjectsWithTag("Chicken");
+        ChickenCount.GetComponent<Text>().text = ("Collected Chickens: " + chickensCaught + "/" + chickensInLevel.Length);
         caughtChook.SetActive(false);
         hasChicken = false;
         revealingScript = FindObjectOfType<RevealingScript>();
+        chickens = chickensInLevel.Length;
+        //level = SceneManager.GetActiveScene();
+    }
+
+    public void Update()
+    {
+        
+        
+        if(chickens == 0)
+        {
+
+            foreach(GameObject chookers in chickensInLevel)
+                GameObject.Destroy(chookers);
+        }
+        if(allCaught.Length == 0)
+        {
+            Levels();
+        }
+        
     }
 
     private void OnTriggerEnter(Collider collider)
@@ -32,6 +63,11 @@ public class CatchChicken : MonoBehaviour
             timer = 0;
         }
 
+    }
+
+    public void Levels()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     private void OnTriggerStay(Collider collider)
@@ -50,6 +86,8 @@ public class CatchChicken : MonoBehaviour
             timer += Time.deltaTime;
             if (timer >= dropoffTime)
             {
+                chickensCaught++;
+                ChickenCount.GetComponent<Text>().text = ("Collected Chickens: " + chickensCaught + "/" + chickensInLevel.Length);
                 DropoffChook();
             }
         }
@@ -64,14 +102,16 @@ public class CatchChicken : MonoBehaviour
     {        
         caughtChook.SetActive(true);
         hasChicken = true;
-        Destroy(chook);
+        chook.SetActive(false);
     }
 
     public void DropoffChook()
-    {        
+    {
         caughtChook.SetActive(false);
         hasChicken = false;
         revealingScript.CatchChook();
+        chickens--;
+        allCaught = GameObject.FindGameObjectsWithTag("Chicken");
     }
     
 }

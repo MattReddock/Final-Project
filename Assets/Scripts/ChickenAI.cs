@@ -7,7 +7,7 @@ using UnityEngine.AI;
 public class ChickenAI : MonoBehaviour
 {
     public float wanderRadius = 3.0f;
-    public float wanderTimer = 5.0f;
+    public float wanderTimer = 8.0f;
     private float timer;
     private float mineTimer;
     private Transform target;
@@ -32,24 +32,25 @@ public class ChickenAI : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         timer = wanderTimer;
         anim = GetComponent<Animator>();
-        mineTimer = Random.Range(3f, 7f);        
+        mineTimer = Random.Range(3f, 7f);
+        
     }
  
     // Update is called once per frame
     void Update ()
     {
-        timer += Time.deltaTime;
+        timer += Time.deltaTime + Random.Range(10f, 40f);
         
  
         if (timer >= wanderTimer) {
+            timer += Random.Range(2f, 6f);
             if(!running)
             {
                 Vector3 newPos = RandomNavSphere(transform.position, wanderRadius, -1);            
                 agent.SetDestination(newPos);
                 timer = 0;
                 walking = true;
-                Invoke("StopWalk", 0.8f);
-                running = false;
+                //Invoke("StopWalk", 1f);
             }
             
         }
@@ -103,19 +104,20 @@ public class ChickenAI : MonoBehaviour
     private void StopWalk()
     {
         walking = false;
-    }
+    }    
 
     public static Vector3 RandomNavSphere(Vector3 origin, float dist, int layermask)
     {
         Vector3 randDirection = Random.insideUnitSphere * dist;
- 
+
         randDirection += origin;
- 
+
         NavMeshHit navHit;
- 
-        NavMesh.SamplePosition (randDirection, out navHit, dist, layermask);
- 
+
+        NavMesh.SamplePosition(randDirection, out navHit, dist, layermask);
+
         return navHit.position;
+        
     }
 
     public void DropMine()
@@ -129,8 +131,15 @@ public class ChickenAI : MonoBehaviour
 
         if (running)
         {
-            Instantiate(EggPrefab, transform.position, transform.rotation);
+            GameObject Egg = Instantiate(EggPrefab, transform.position, transform.rotation);
+            Egg.transform.Rotate(new Vector3(-90f, 0f, 0f));
+            Egg.transform.TransformDirection(new Vector3(0f, 0.7f, 0f));
         }
-        mineTimer = Random.Range(3f, 7f);
+        mineTimer = Random.Range(1f, 4f);
     }
+
+    //Allow you to set a custom rotation for a prefab clone eg. the eggmine
+    //GameObject pc = (GameObject)Instantiate(Prefab, position, rotation, transform);
+    //pc.transform.Rotate(new Vector3(rotationWished.x, rotationWished.y, rotationWished.z));
+
 }

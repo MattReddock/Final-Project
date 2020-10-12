@@ -7,9 +7,6 @@ public class EggMine : MonoBehaviour
     float lifetime = 5.0f;
     private Movement playerMovement;
 
-    
-
-
     private void Start()
     {
         playerMovement = FindObjectOfType<Movement>();
@@ -32,9 +29,17 @@ public class EggMine : MonoBehaviour
         }
     }
 
+    void SafetyLine()
+    {
+        playerMovement.LeaveEgg();
+    }
+
     // Update is called once per frame
     void Update()
     {
+        Invoke("SafetyLine", 5f);
         Destroy(gameObject, lifetime);
     }
+
+    
 }
