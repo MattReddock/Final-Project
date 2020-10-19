@@ -14,6 +14,7 @@ public class CatchChicken : MonoBehaviour
     private int chickensCaught = 0;
     public GameObject[] chickensInLevel;
     public GameObject[] allCaught;
+    private Movement movement;
     
     private int chickens;
     //private int level;
@@ -32,6 +33,7 @@ public class CatchChicken : MonoBehaviour
         hasChicken = false;
         revealingScript = FindObjectOfType<RevealingScript>();
         chickens = chickensInLevel.Length;
+        movement = FindObjectOfType<Movement>();
         //level = SceneManager.GetActiveScene();
     }
 
@@ -67,7 +69,18 @@ public class CatchChicken : MonoBehaviour
 
     public void Levels()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        int Counter;
+
+        Counter = SceneManager.GetActiveScene().buildIndex;
+        if (Counter != 3)
+        {
+            SceneManager.LoadScene(Counter + 1);
+        }
+
+        if(Counter >= 3)
+        {
+            movement.Winner();
+        }
     }
 
     private void OnTriggerStay(Collider collider)

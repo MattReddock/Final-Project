@@ -37,5 +37,4 @@ public class StartMenuScript : MonoBehaviour
         levelSelect.SetActive(false);
         start.SetActive(true);
     }
-    
 }
