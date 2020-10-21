@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Movement : MonoBehaviour
 {
@@ -23,10 +24,15 @@ public class Movement : MonoBehaviour
     private Rigidbody rb;
     private CatchChicken caught;
 
+    private GameObject winMenu;
+
     private void Start()
     {
+        Time.timeScale = 1;
+        winMenu = GameObject.FindGameObjectWithTag("WinMenu");
         caught = FindObjectOfType<CatchChicken>();
         rb = GetComponent<Rigidbody>();
+        winMenu.SetActive(false);
     }
 
     void Update()
@@ -75,6 +81,14 @@ public class Movement : MonoBehaviour
     public void LeaveEgg()
     {
         speed = 12f;
+    }
+
+    public void Winner()
+    {
+        Time.timeScale = 0;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        winMenu.SetActive(true);
     }
 }
 
