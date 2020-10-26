@@ -17,13 +17,14 @@ public class CatchChicken : MonoBehaviour
     private Movement movement;
     
     private int chickens;
-    //private int level;
+    public transform thePlayer;
+    public GameObject chooks;
 
     public bool hasChicken = false;
 
     private RevealingScript revealingScript;
     
-    // Start is called before the first frame update
+    
     void Start()
     {
         chickensInLevel = GameObject.FindGameObjectsWithTag("Chicken");
@@ -34,7 +35,7 @@ public class CatchChicken : MonoBehaviour
         revealingScript = FindObjectOfType<RevealingScript>();
         chickens = chickensInLevel.Length;
         movement = FindObjectOfType<Movement>();
-        //level = SceneManager.GetActiveScene();
+        
     }
 
     public void Update()
@@ -116,6 +117,10 @@ public class CatchChicken : MonoBehaviour
         caughtChook.SetActive(true);
         hasChicken = true;
         chook.SetActive(false);
+        if(hasChicken == true)
+        {
+            invoke("LooseChook", 6f);
+        }
     }
 
     public void DropoffChook()
@@ -125,6 +130,14 @@ public class CatchChicken : MonoBehaviour
         revealingScript.CatchChook();
         chickens--;
         allCaught = GameObject.FindGameObjectsWithTag("Chicken");
+    }
+
+    public void LooseChook()
+    {
+        if(hasChicken == true)
+        {
+            chooks.transform.position = thePlayer.transform.position
+        }
     }
     
 }
