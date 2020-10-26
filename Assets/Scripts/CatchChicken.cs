@@ -15,6 +15,8 @@ public class CatchChicken : MonoBehaviour
     public GameObject[] chickensInLevel;
     public GameObject[] allCaught;
     private Movement movement;
+    private float holdTimer = 0f;
+    private float looseTimer = 6f;
     
     private int chickens;
     public Transform thePlayer;
@@ -40,10 +42,16 @@ public class CatchChicken : MonoBehaviour
 
     public void Update()
     {
-        if (GetComponent<Collider>().gameObject.tag == "Chicken" && hasChicken == false)
+        
+        if(hasChicken == true)
         {
-            //capturedChook = 
+            holdTimer += Time.deltaTime;
+            if(holdTimer >= looseTimer)
+            {
+                LooseChook();
+            }
         }
+        
 
         if(chickens == 0)
         {
@@ -66,8 +74,7 @@ public class CatchChicken : MonoBehaviour
         else if (collider.gameObject.tag == "DropZone" && hasChicken == true)
         {
             timer = 0;
-        }
-
+        }        
     }
 
     public void Levels()
@@ -115,31 +122,33 @@ public class CatchChicken : MonoBehaviour
     }
 
     public void PickupChook(GameObject chook)
-    {        
-        heldChook.SetActive(true);
+    {
         hasChicken = true;
-        chook.SetActive(false);
-        if(hasChicken == true)
-        {
-            Invoke("LooseChook", 6f);
-        }
+        capturedChook = chook;
+        heldChook.SetActive(true);
+        capturedChook.SetActive(false);
+        
     }
 
     public void DropoffChook()
     {
-        heldChook.SetActive(false);
         hasChicken = false;
+        heldChook.SetActive(false);        
         revealingScript.CatchChook();
         chickens--;
         allCaught = GameObject.FindGameObjectsWithTag("Chicken");
+        //capturedChook.SetActive(false);
     }
 
     public void LooseChook()
     {
-        if(hasChicken == true)
-        {
-            capturedChook.transform.position = thePlayer.transform.position;
-        }
+        hasChicken = false;
+        holdTimer = 0f;
+        capturedChook.SetActive(true);
+        capturedChook.transform.position = thePlayer.transform.position + transform.forward * 2f;        
+        heldChook.SetActive(false);
+        
+        
     }
     
 }
