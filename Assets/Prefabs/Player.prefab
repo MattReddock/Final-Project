@@ -189,11 +189,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   caughtChook: {fileID: 1521394148086027540}
-  catchTime: 2
-  dropoffTime: 2.5
+  catchTime: 1
+  dropoffTime: 1
   ChickenCount: {fileID: 0}
-  chickensInLevel: []
-  allCaught: []
+  level: 0
   hasChicken: 0
 --- !u!54 &1520452466327503956
 Rigidbody:
