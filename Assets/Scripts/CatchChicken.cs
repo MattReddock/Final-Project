@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class CatchChicken : MonoBehaviour
 {
-    public GameObject caughtChook;
+    public GameObject heldChook;
     private float timer = 0;
     public float catchTime = 2f;
     public float dropoffTime = 2f;
@@ -17,8 +17,8 @@ public class CatchChicken : MonoBehaviour
     private Movement movement;
     
     private int chickens;
-    public transform thePlayer;
-    public GameObject chooks;
+    public Transform thePlayer;
+    public GameObject capturedChook;
 
     public bool hasChicken = false;
 
@@ -30,7 +30,7 @@ public class CatchChicken : MonoBehaviour
         chickensInLevel = GameObject.FindGameObjectsWithTag("Chicken");
         allCaught = GameObject.FindGameObjectsWithTag("Chicken");
         ChickenCount.GetComponent<Text>().text = ("Collected Chickens: " + chickensCaught + "/" + chickensInLevel.Length);
-        caughtChook.SetActive(false);
+        heldChook.SetActive(false);
         hasChicken = false;
         revealingScript = FindObjectOfType<RevealingScript>();
         chickens = chickensInLevel.Length;
@@ -40,11 +40,13 @@ public class CatchChicken : MonoBehaviour
 
     public void Update()
     {
-        
-        
+        if (GetComponent<Collider>().gameObject.tag == "Chicken" && hasChicken == false)
+        {
+            //capturedChook = 
+        }
+
         if(chickens == 0)
         {
-
             foreach(GameObject chookers in chickensInLevel)
                 GameObject.Destroy(chookers);
         }
@@ -114,18 +116,18 @@ public class CatchChicken : MonoBehaviour
 
     public void PickupChook(GameObject chook)
     {        
-        caughtChook.SetActive(true);
+        heldChook.SetActive(true);
         hasChicken = true;
         chook.SetActive(false);
         if(hasChicken == true)
         {
-            invoke("LooseChook", 6f);
+            Invoke("LooseChook", 6f);
         }
     }
 
     public void DropoffChook()
     {
-        caughtChook.SetActive(false);
+        heldChook.SetActive(false);
         hasChicken = false;
         revealingScript.CatchChook();
         chickens--;
@@ -136,7 +138,7 @@ public class CatchChicken : MonoBehaviour
     {
         if(hasChicken == true)
         {
-            chooks.transform.position = thePlayer.transform.position
+            capturedChook.transform.position = thePlayer.transform.position;
         }
     }
     
