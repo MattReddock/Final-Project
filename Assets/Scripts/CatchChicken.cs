@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class CatchChicken : MonoBehaviour
 {
     public GameObject heldChook;
+
     private float timer = 0;
     public float catchTime = 2f;
     public float dropoffTime = 2f;
