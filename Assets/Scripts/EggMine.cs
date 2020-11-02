@@ -7,9 +7,6 @@ public class EggMine : MonoBehaviour
     float lifetime = 5.0f;
     private Movement playerMovement;
 
-    
-
-
     private void Start()
     {
         playerMovement = FindObjectOfType<Movement>();

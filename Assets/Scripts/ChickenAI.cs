@@ -32,14 +32,14 @@ public class ChickenAI : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         timer = wanderTimer;
         anim = GetComponent<Animator>();
-        mineTimer = Random.Range(3f, 7f);
+        mineTimer = Random.Range(1f, 4f);
         
     }
  
     // Update is called once per frame
     void Update ()
     {
-        timer += Time.deltaTime + Random.Range(10f, 40f);
+        timer += Time.deltaTime + Random.Range(1f, 8f);
         
  
         if (timer >= wanderTimer) {
@@ -131,9 +131,7 @@ public class ChickenAI : MonoBehaviour
 
         if (running)
         {
-            GameObject Egg = Instantiate(EggPrefab, transform.position, transform.rotation);
-            Egg.transform.Rotate(new Vector3(-90f, 0f, 0f));
-            Egg.transform.TransformDirection(new Vector3(0f, 0.7f, 0f));
+            GameObject Egg = Instantiate(EggPrefab, transform.position + new Vector3(0f, 0.01f, 0f), transform.rotation * Quaternion.Euler(-90f, 0f, 0f));            
         }
         mineTimer = Random.Range(1f, 4f);
     }
