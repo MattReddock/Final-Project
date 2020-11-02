@@ -75,6 +75,7 @@ public class CatchChicken : MonoBehaviour
         else if (collider.gameObject.tag == "DropZone" && hasChicken == true)
         {
             timer = 0;
+            holdTimer = 0f;
         }        
     }
 
