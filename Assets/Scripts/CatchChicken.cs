@@ -129,6 +129,7 @@ public class CatchChicken : MonoBehaviour
         capturedChook = chook;
         heldChook.SetActive(true);
         capturedChook.SetActive(false);
+        capturedChook.transform.parent = thePlayer.transform;
         
     }
 
@@ -149,7 +150,7 @@ public class CatchChicken : MonoBehaviour
         capturedChook.SetActive(true);
         capturedChook.transform.position = thePlayer.transform.position + transform.forward * 2f;        
         heldChook.SetActive(false);
-        
+        capturedChook.transform.parent = null;
         
     }
     

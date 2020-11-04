@@ -2937,6 +2937,16 @@ PrefabInstance:
       propertyPath: heldChook
       value: 
       objectReference: {fileID: 1776038602}
+    - target: {fileID: 7165864385776326076, guid: 3d1c31ee47963484fb9a140fbc2ccc43,
+        type: 3}
+      propertyPath: catchTime
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7165864385776326076, guid: 3d1c31ee47963484fb9a140fbc2ccc43,
+        type: 3}
+      propertyPath: dropoffTime
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 8282673067376500806, guid: 3d1c31ee47963484fb9a140fbc2ccc43,
         type: 3}
       propertyPath: m_LocalPosition.x
