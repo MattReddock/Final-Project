@@ -53,7 +53,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4068638244980102, guid: 340c1e8bd6d5c8c439f37f85e55bd6e3, type: 3}
       propertyPath: m_RootOrder
-      value: 55
+      value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 4068638244980102, guid: 340c1e8bd6d5c8c439f37f85e55bd6e3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -307,6 +307,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1734005076218093647, guid: decb64de840e2a4429563fca7cfd0ee6,
+        type: 3}
+      propertyPath: m_Range
+      value: 1.7459297
+      objectReference: {fileID: 0}
     - target: {fileID: 3900606866539337761, guid: decb64de840e2a4429563fca7cfd0ee6,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -401,6 +406,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8404075749374514875, guid: decb64de840e2a4429563fca7cfd0ee6,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.1983957
       objectReference: {fileID: 0}
     - target: {fileID: 8433841658780259619, guid: decb64de840e2a4429563fca7cfd0ee6,
         type: 3}
